@@ -25,30 +25,18 @@ export default class App extends React.Component {
 
         return (
             <div>
-                <button onClick={() => console.log('add note')}>+</button>
+                <button onClick={this.addNote}>+</button>
                 <Notes notes={notes} />
             </div>
         );
     }
+
+    addNote = () => {
+        this.setState({
+            notes: this.state.notes.concat([{
+                id: uuid.v4(),
+                task: 'New task'
+            }])
+        });
+    }
 }
-
-
-// const notes = [
-//     {
-//         id: uuid.v4(),
-//         task: 'Learn React'
-//     },
-//     {
-//         id: uuid.v4(),
-//         task: 'Do something'
-//     }
-// ];
-
-
-// export default () => (
-//     <div>
-//         <button onClick={() => console.log('add note')}>+</button>
-//         <Notes notes={notes} />
-//     </div>
-
-// );
